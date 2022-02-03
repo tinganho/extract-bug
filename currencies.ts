@@ -1,0 +1,1 @@
+export type Currency = 'DKK' | 'EUR' | 'NOK' | 'PLN' | 'SEK';
