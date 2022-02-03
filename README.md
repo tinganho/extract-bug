@@ -13,18 +13,20 @@ declare function baseUnit<T extends Measure>(
 ): [TranslationKeys<`quantityUi.units.${T}`>, string];
 ```
 
-Though, we have noticed that usage of `TranslationKeys<T>` incurs a hug performance impact on our project. Several multiples 
-compared to not using `TranslationKeys<T>`. We suspect this can be optimized.
+Though, we have noticed that usage of `TranslationKeys<T>` incurs a huge performance impact on our project. Several multiples 
+compared to not using `TranslationKeys<T>`. We suspect this can be optimized. Also TS Server take a long time to load.
 
-To test out the performance impact you can run 
+To test out the performance impact you can run: 
 
 ```
-tsc --generateTraceDir traceDir --incremental false
+npx tsc --generateTraceDir traceDir --incremental false
 ```
 And then get the hotspots with:
 ```
 npx analyze-trace traceDir
 ```
+
+Tweak the code in `test.ts` by removing `TranslationKeys<T>` below:
 
 ```
 declare function baseUnit<T extends Measure>(
@@ -35,3 +37,5 @@ declare function baseUnit<T extends Measure>(
 declare const quantity: Quantity;
 console.log(baseUnit(quantity));
 ```
+
+And run the build and hotspot commands again. Voila no hotspots.
