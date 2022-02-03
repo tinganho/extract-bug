@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "typescript": "^4.6.0-dev.20220202"
+  },
+  "dependencies": {
+    "@typescript/analyze-trace": "^0.6.0"
   }
 }
