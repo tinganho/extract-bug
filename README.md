@@ -28,7 +28,7 @@ npx analyze-trace traceDir
 
 Tweak the code in `test.ts` by removing `TranslationKeys<T>` below:
 
-```
+```ts
 declare function baseUnit<T extends Measure>(
     measure: T
 ): [TranslationKeys<`quantityUi.units.${T}`>, string];
